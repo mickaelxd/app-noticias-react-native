@@ -1,15 +1,17 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Button from '~/components/Button';
 
 const Home = () => {
   const navigation = useNavigation();
 
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate('Tela1')}>
-        <Text>Ir para outra tela</Text>
-      </TouchableOpacity>
+      <Button
+        title="Criar Nova Noticia"
+        onPress={() => navigation.navigate('CreateNews')}
+      />
     </View>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Tela1 = () => {
+const CreateNews = () => {
   return (
     <View>
       <Text>Tela 1</Text>
@@ -9,4 +9,4 @@ const Tela1 = () => {
   );
 };
 
-export default Tela1;
+export default CreateNews;
