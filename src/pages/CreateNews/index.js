@@ -8,6 +8,7 @@ import { Container } from './styles';
 const CreateNews = () => {
   const [titleValue, setTitleValue] = useState(null);
   const [bodyValue, setBodyValue] = useState(null);
+  const [authorValue, setAuthorValue] = useState(null);
   const navigation = useNavigation();
 
   const handleContinue = () => {
@@ -15,11 +16,14 @@ const CreateNews = () => {
       titleValue &&
       titleValue.length > 10 &&
       bodyValue &&
-      bodyValue.length > 10
+      bodyValue.length > 10 &&
+      authorValue &&
+      authorValue.length > 3
     ) {
       const object = {
         title: titleValue,
         body: bodyValue,
+        author: authorValue,
       };
 
       navigation.navigate('Home', { object, reload: true });
@@ -29,9 +33,13 @@ const CreateNews = () => {
   return (
     <Container>
       <Input
+        onChangeText={text => setAuthorValue(text)}
+        value={authorValue}
+        label="Autor"
+      />
+      <Input
         onChangeText={text => setTitleValue(text)}
         value={titleValue}
-        marginBottom="15px"
         label="Título da Notícia"
       />
       <Input
