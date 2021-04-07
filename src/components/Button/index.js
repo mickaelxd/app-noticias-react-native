@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Container, Title } from './styles';
+import { Container, IconContainer, Title } from './styles';
 
-const Button = ({ onPress, title }) => {
+const Button = ({ onPress, title, icon, width }) => {
   return (
-    <Container onPress={onPress}>
+    <Container width={width} onPress={onPress}>
       <Title>{title}</Title>
+      {icon && <IconContainer>{icon}</IconContainer>}
     </Container>
   );
 };
