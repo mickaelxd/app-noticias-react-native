@@ -16,10 +16,21 @@ const Home = ({ route, navigation }) => {
   const [searchBarText, setSearchBarText] = useState('');
 
   const handleNews = useCallback(async () => {
+    const newsObject = route.params?.object;
     try {
-      if (route.params?.object) {
-        if (isEmpty(route.params?.object)) return;
-        setNews([route.params?.object, ...news]);
+      if (newsObject) {
+        if (isEmpty(newsObject)) return;
+        const editNews = news.find(newsItem => newsItem.id === newsObject.id);
+
+        if (editNews) {
+          const index = news.indexOf(editNews);
+          if (index > -1) {
+            news.splice(index, 1);
+            setNews([editNews, ...news]);
+          }
+        } else {
+          setNews([newsObject, ...news]);
+        }
       }
     } catch (e) {
       // eslint-disable-next-line no-console
@@ -84,7 +95,7 @@ const Home = ({ route, navigation }) => {
       )}
 
       {filteredNews()?.map(NewsItem => (
-        <Card key={NewsItem.title} onPress={() => handleEditNews(NewsItem)}>
+        <Card key={NewsItem.id} onPress={() => handleEditNews(NewsItem)}>
           <TextLabel color="black" type="bold">
             {NewsItem.title}
           </TextLabel>

@@ -6739,6 +6739,11 @@ react-native-svg-transformer@^0.14.3:
     path-dirname "^1.0.2"
     semver "^5.6.0"
 
+react-native-uuid@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-uuid/-/react-native-uuid-2.0.0.tgz#997cdebdbd015a176bd4e172f8a04764a8ccc95f"
+  integrity sha512-y6urDRY494TnO6ZS0JrWQvR/QPc2fbllls+ic1Ejc7NfDGU9wv5sRKAIhiOfrCFisyWQzaNoFG7KfIMPjOTv8g==
+
 react-native-vector-icons@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-8.1.0.tgz#e8ee2b17bc4d9f636da1c6f67feee8e2a850c3d8"

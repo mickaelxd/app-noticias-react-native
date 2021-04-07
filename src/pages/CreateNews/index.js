@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import uuid from 'uuid';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 
 import { Container } from './styles';
+import TextLabel from '~/components/TextLabel';
 
 const CreateNews = ({ route, navigation }) => {
   const [titleValue, setTitleValue] = useState(null);
   const [bodyValue, setBodyValue] = useState(null);
   const [authorValue, setAuthorValue] = useState(null);
+  const [idValue, setIdValue] = useState(uuid.v4());
 
   useEffect(() => {
     const newsItem = route.params?.newsItem;
@@ -15,19 +18,21 @@ const CreateNews = ({ route, navigation }) => {
       setTitleValue(newsItem.title);
       setBodyValue(newsItem.body);
       setAuthorValue(newsItem.author);
+      setIdValue(newsItem.id);
     }
   }, []);
 
   const handleContinue = () => {
     if (
       titleValue &&
-      titleValue.length > 10 &&
+      titleValue.length > 5 &&
       bodyValue &&
-      bodyValue.length > 10 &&
+      bodyValue.length > 5 &&
       authorValue &&
-      authorValue.length > 3
+      authorValue.length > 5
     ) {
       const object = {
+        id: idValue,
         title: titleValue,
         body: bodyValue,
         author: authorValue,
@@ -42,20 +47,23 @@ const CreateNews = ({ route, navigation }) => {
       <Input
         onChangeText={text => setAuthorValue(text)}
         value={authorValue}
-        label="Autor"
+        label="Autor*"
       />
       <Input
         onChangeText={text => setTitleValue(text)}
         value={titleValue}
-        label="Título da Notícia"
+        label="Título da Notícia*"
       />
       <Input
         onChangeText={text => setBodyValue(text)}
         value={bodyValue}
         marginBottom="15px"
-        label="Corpo da Notícia"
+        label="Corpo da Notícia*"
         multiline
       />
+      <TextLabel color="black">
+        Todos os Campos tem um limite mínimo de 5 caracteres*
+      </TextLabel>
       <Button title="Salvar" onPress={handleContinue} />
     </Container>
   );
