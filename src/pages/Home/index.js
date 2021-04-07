@@ -27,7 +27,12 @@ const Home = ({ route, navigation }) => {
     }
   }, [news, route.params?.object]);
 
-  const handleEditNews = useCallback(() => {}, []);
+  const handleEditNews = useCallback(
+    newsItem => {
+      navigation.navigate('CreateNews', { newsItem });
+    },
+    [navigation]
+  );
 
   const filteredNews = useCallback(() => {
     if (searchBarText) {

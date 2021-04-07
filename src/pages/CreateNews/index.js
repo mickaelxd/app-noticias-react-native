@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 
 import { Container } from './styles';
 
-const CreateNews = () => {
+const CreateNews = ({ route, navigation }) => {
   const [titleValue, setTitleValue] = useState(null);
   const [bodyValue, setBodyValue] = useState(null);
   const [authorValue, setAuthorValue] = useState(null);
-  const navigation = useNavigation();
+
+  useEffect(() => {
+    const newsItem = route.params?.newsItem;
+    if (newsItem) {
+      setTitleValue(newsItem.title);
+      setBodyValue(newsItem.body);
+      setAuthorValue(newsItem.author);
+    }
+  }, []);
 
   const handleContinue = () => {
     if (

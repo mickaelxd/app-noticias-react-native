@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from './styles';
 
-const Card = ({ children }) => {
-  return <Container>{children}</Container>;
+const Card = ({ children, onPress }) => {
+  return <Container onPress={onPress}>{children}</Container>;
 };
 
 export default Card;
